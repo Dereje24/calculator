@@ -15,10 +15,115 @@ Extra credit: If you’re comfortable with jQuery, create a “screen” for you
 Extra credit: Create a “parent filter” which checks if the user has inputted any immature numbers “e.g. 80085” and scolds the user if so.
 */
 
-var input =	[" "," "," "];
+var numberMap = {
+	'zero': 0,
+	'one': 1,
+	'two': 2,
+	'three': 3,
+	'four': 4,
+	'five': 5,
+	'six': 6,
+	'seven': 7,
+	'eight': 8,
+	'nine': 9,
+}
+
+
+
+var numberElements = document.getElementsByClassName("number");
+var operatorElements = document.getElementsByClassName("operators");
+var decimal = document.getElementById("decimal");
+var clear = document.getElementById("clear");
+var displayDiv = document.getElementById("display");
+var equalsButton = document.getElementById("equals");
+
+
+var input =	[];
+var display = "";
+var operatorClicked = false;
 var temp = 0;
-var operatorHolder = '';
+var operator = '';
 var result = 0;
+var num1 = "";
+var num2 = "";
+var operator = "";
+
+
+decimal.addEventListener("click", function(event) {
+	if (operatorClicked) {
+		num2 = num2 + ".";
+		updateDisplay(num2);
+	}
+	else {
+		num1 = num1 + ".";
+		updateDisplay(num1);
+	}
+})
+
+clear.addEventListener("click", function(event) {
+	num1 = "";
+	num2 = "";
+	operator = "";
+	operatorClicked = false;
+	updateDisplay("");
+})
+
+equalsButton.addEventListener("click", function(event) {
+	var result = getResult(operator, parseFloat(num1), parseFloat(num2));
+	updateDisplay(result);
+})
+
+function updateDisplay(display) {
+	displayDiv.innerHTML = display;
+}
+
+
+
+
+function makeNumberCallback(elem) {
+	return function() {
+		var id = elem.getAttribute("id");
+		// input.push(id);
+		if (operatorClicked) {
+			num2 = num2 + numberMap[id].toString(); // 7
+			updateDisplay(num2);
+		}
+		else {
+			num1 = num1 + numberMap[id].toString();
+			updateDisplay(num1);
+		}
+
+		// display = display + numberMap[id];
+		// updateDisplay(display);
+		// console.log(input);
+	}
+}
+
+function makeOperatorCallback(elem) {
+	return function() {
+		var id = elem.getAttribute("id");
+		input.push(id);
+		operatorClicked = true;
+		operator = id;
+		console.log(input);
+	}
+}
+
+for (var i = 0; i < numberElements.length; i++) {
+	var elem = numberElements[i];
+	elem.addEventListener("click", makeNumberCallback(elem));
+}
+
+for (var i = 0; i < operatorElements.length; i++) {
+	var elem = operatorElements[i];
+	elem.addEventListener("click", makeOperatorCallback(elem));
+}
+
+
+
+
+
+
 
 // add function
 function add(num1, num2){
@@ -42,11 +147,31 @@ function divide(num1, num2){
 
 //document.getElementById('one').onclick = function () {console.log(1)};
 
-function equalas (operator, num1, num2){
-	if (operator === '+'){
-		var sum = add(input[0], input[2]);
-	return sum;
+function getResult(operator, num1, num2){
+	//console.log("operator: ", operator);
+
+	switch (operator) {
+		case 'add': {
+			var result = add(num1, num2);
+			return result;
+		}
+		case 'subtract': {
+			var result = subtract(num1, num2);
+			return result;
+		}
+		case 'multiply': {
+			var result = multiply(num1, num2);
+			return result;
+		}
+		case 'divide': {
+			var result = divide(num1, num2);
+			return result;
+		}
+		default: {
+			throw new Error('Operator not recognized: ', operator);
+		}
 	}
+
 }
 
 function clear(){

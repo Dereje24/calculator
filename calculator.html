@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+	<div class="screen">
+		0
+	</div>
+	<div>
+<table id="myTable">
+	<tr>
+		<td class = "operators" id="clear">AC</td>
+		<td class = "operators" id="negPos">-/+</td>
+		<td class = "operators" id="mod">%</td>
+		<td class = "operators" id="add">+</td>
+	</tr>
+	<tr>
+		<td class = "number" id="seven">7</td>
+		<td class = "number" id="eight">8</td>
+		<td class = "number" id="nine">9</td>
+		<td class = "operators" id="subtract">-</td>
+	</tr>
+	<tr>
+		<td class = "number" id="four">4</td>
+		<td class = "number" id="five">5</td>
+		<td class = "number" id="six">6</td>
+		<td class = "operators" id="multiply">x</td>
+	</tr>
+	<tr>
+		<td class = "number" id="one">1</td>
+		<td class = "number" id="two">2</td>
+		<td class = "number" id="three">3</td>
+		<td class = "operators" id="divide">/</td>
+	</tr>
+	<tr>
+		<td class = "number" id="zero">0</td>
+		<td id="decimal">.</td>
+		<td class = "operators" id="equals">=</td>
+	</tr>
+</table>
+<form onclick="<input type="number" name="firstInput">">
+
+</form>
+</div>
+	<script type="text/javascript" src = "calculator.js"></script>
+	<script>
+		// Bind event handlers to every number cell
+		document.addEventListener("click", function(event){ 
+				var elements = document.getElementsByClassName("number");
+
+				for(var i =0; i < elements.length; i++){
+					var element = elements[i];
+
+					element.addEventListener("click", function(event){
+						console.log(element);
+					})
+				}
+
+				// elements.forEach(function(element){
+				// 	element.addEventListener("click", function(event){
+				// 		console.log(element);
+				// 	})
+				// });
+		})
+
+	</script>
+</body>
+
+
+</html>

@@ -1,0 +1,44 @@
+
+div {
+
+}
+table, th, td {
+	border: 1px solid black;
+
+}
+
+th{
+	padding: 20px;
+	background-color: orange;
+	color: black;
+	text-align: right;
+	font-size: 35px;
+	align-content: right;
+}
+
+ td {
+	padding: 20px;
+	background-color: orange;
+	color: black;
+	text-align: center;
+	font-size: 35px;
+}
+.number{
+
+}
+
+.operators{
+
+}
+.screen{
+	width:303px;
+    height:73px;
+    background-color:orange;
+    color: black;
+    border:1px solid black;
+    border-radius:1px;
+    text-align:right;
+    font-size:50px;
+    padding:15px 15px 0px 0px;
+    
+}

@@ -4,15 +4,16 @@
 <head>
 	<title>Calculator</title>
 	<link rel="stylesheet" type="text/css" href="calculator.css">
+	<script type="text/javascript" src="calculator.js" async></script>
 </head>
 <body>
-	<div class="screen">
-		0
+	<div id="display" class="screen">
+
 	</div>
 	<div>
 <table id="myTable">
 	<tr>
-		<td class = "operators" id="clear">AC</td>
+		<td id="clear">AC</td>
 		<td class = "operators" id="negPos">-/+</td>
 		<td class = "operators" id="mod">%</td>
 		<td class = "operators" id="add">+</td>
@@ -38,35 +39,12 @@
 	<tr>
 		<td class = "number" id="zero">0</td>
 		<td id="decimal">.</td>
-		<td class = "operators" id="equals">=</td>
+		<td id="equals">=</td>
 	</tr>
 </table>
-<form onclick="<input type="number" name="firstInput">">
 
-</form>
 </div>
-	<script type="text/javascript" src = "calculator.js"></script>
-	<script>
-		// Bind event handlers to every number cell
-		document.addEventListener("click", function(event){ 
-				var elements = document.getElementsByClassName("number");
-
-				for(var i =0; i < elements.length; i++){
-					var element = elements[i];
-
-					element.addEventListener("click", function(event){
-						console.log(element);
-					})
-				}
-
-				// elements.forEach(function(element){
-				// 	element.addEventListener("click", function(event){
-				// 		console.log(element);
-				// 	})
-				// });
-		})
-
-	</script>
+	
 </body>
 
 
